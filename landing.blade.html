@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elliot Lane - Photography Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            background-color: transparent;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: lowercase;
+            letter-spacing: -1px;
+            z-index: 101;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #333;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 2px;
+            background-color: #333;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background-color: white;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 5%;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .section-title span {
+            font-weight: 600;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 5rem 5%;
+        }
+
+        .album-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .album-tab {
+            padding: 0.5rem 1.5rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .album-tab.active {
+            background: #333;
+            color: white;
+            border-color: #333;
+        }
+
+        .album-content {
+            display: none;
+        }
+
+        .album-content.active {
+            display: block;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .photo-item {
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Gear Section */
+        .gear-section {
+            padding: 5rem 5%;
+            background-color: #f0f0f0;
+        }
+        
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .gear-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .gear-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gear-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .gear-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gear-item:hover .gear-image img {
+            transform: scale(1.05);
+        }
+        
+        .gear-details {
+            padding: 1.5rem;
+        }
+        
+        .gear-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .gear-details p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: #333;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background: #555;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero {
+                padding-top: 120px;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-section {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .about-image {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .gear-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gear-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="mainNav">
+        <div class="logo">sevrianiskandar</div>
+        <div class="nav-links">
+            <a href="#about">ABOUT</a>
+            <a href="#gallery">GALLERY</a>
+            <a href="#gear">GEAR</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about">ABOUT</a>
+        <a href="#gallery">GALLERY</a>
+        <a href="#gear">GEAR</a>
+        <a href="#contact">CONTACT</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>i'm passionate about <span>helping you</span></h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut pharetra sit amet aliquam id diam maecenas ultricies mi. Venenatis urna cursus eget nunc. Proin sedile enim sed faucibus ture.</p>
+            <p>Eget nunc lobortis mattis aliquam. Proin sedile enim sed faucibus ture. Congue mauris rhoncus semean vel. Id interdum velit laoreet id. Faucibus pulvinar eugiat nibh.</p>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Elliot Lane">
+        </div>
+        <div class="about-content">
+            <h2 class="section-title">about <span>me</span></h2>
+            <p>Hi, I'm Elliot Lane, a professional photographer with over 10 years of experience capturing special moments. My passion lies in creating timeless images that tell your unique story.</p>
+            <p>I specialize in wedding, portrait, and event photography, with a style that blends documentary and artistic approaches to create authentic, beautiful images.</p>
+            <p>When I'm not behind the camera, you can find me hiking in the mountains or experimenting with new photography techniques.</p>
+        </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">photo <span>gallery</span></h2>
+        <div class="album-tabs">
+            <div class="album-tab active" data-album="prewedding">Prewedding</div>
+            <div class="album-tab" data-album="wedding">Wedding</div>
+            <div class="album-tab" data-album="graduation">Graduation</div>
+            <div class="album-tab" data-album="portrait">Portrait</div>
+        </div>
+
+        <div class="album-content active" id="prewedding">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Prewedding 1">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Prewedding 2">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Prewedding 3">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Prewedding 4">
+                </div>
+            </div>
+        </div>
+
+        <div class="album-content" id="wedding">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding 1">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding 2">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding 3">
+                </div>
+            </div>
+        </div>
+
+        <div class="album-content" id="graduation">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Graduation 1">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Graduation 2">
+                </div>
+            </div>
+        </div>
+
+        <div class="album-content" id="portrait">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Portrait 1">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Portrait 2">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Portrait 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gear-section" id="gear">
+        <h2 class="section-title">my <span>gear</span></h2>
+        <div class="gear-grid">
+            <div class="gear-item">
+                <div class="gear-image">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Canon EOS R5">
+                </div>
+                <div class="gear-details">
+                    <h3>Canon EOS R5</h3>
+                    <p>Full-frame mirrorless camera with 45MP resolution and 8K video capability. My primary tool for capturing high-quality images.</p>
+                </div>
+            </div>
+            <div class="gear-item">
+                <div class="gear-image">
+                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Canon 24-70mm Lens">
+                </div>
+                <div class="gear-details">
+                    <h3>Canon EF 24-70mm f/2.8L II</h3>
+                    <p>Professional standard zoom lens that stays on my camera 80% of the time. Perfect for weddings and portraits.</p>
+                </div>
+            </div>
+            <div class="gear-item">
+                <div class="gear-image">
+                    <img src="https://images.unsplash.com/photo-1573481078804-70c9d3406cff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="DJI Gimbal">
+                </div>
+                <div class="gear-details">
+                    <h3>DJI Ronin-S</h3>
+                    <p>3-axis gimbal stabilizer that ensures buttery smooth footage during video shoots and moving portraits.</p>
+                </div>
+            </div>
+            <div class="gear-item">
+                <div class="gear-image">
+                    <img src="https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Profoto Light">
+                </div>
+                <div class="gear-details">
+                    <h3>Profoto B10</h3>
+                    <p>250Ws battery-powered monolight that gives me studio-quality lighting anywhere I shoot.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">get in <span>touch</span></h2>
+        <p>Ready to book a session or have questions? Reach out to me directly through these channels:</p>
+        
+        <div class="social-links">
+            <a href="https://instagram.com/yourusername" class="social-link" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/yourphonenumber" class="social-link" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:your@email.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Album tabs functionality
+        const albumTabs = document.querySelectorAll('.album-tab');
+        albumTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                albumTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all album contents
+                document.querySelectorAll('.album-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected album content
+                const albumId = this.getAttribute('data-album');
+                document.getElementById(albumId).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
