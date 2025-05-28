@@ -200,6 +200,71 @@
             font-weight: 600;
         }
 
+        /* Video Section */
+        .video-section {
+            padding: 5rem 5%;
+            background-color: #f0f0f0;
+        }
+
+        .video-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .video-tab {
+            padding: 0.5rem 1.5rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-tab.active {
+            background: #333;
+            color: white;
+            border-color: #333;
+        }
+
+        .video-content {
+            display: none;
+        }
+
+        .video-content.active {
+            display: block;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .video-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-item iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         /* Gallery Section */
         .gallery-section {
             padding: 5rem 5%;
@@ -385,6 +450,10 @@
                 font-size: 2rem;
             }
 
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
             .gear-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -414,6 +483,7 @@
         <div class="logo">sevrianiskandar</div>
         <div class="nav-links">
             <a href="#about">ABOUT</a>
+            <a href="#video">VIDEO</a>
             <a href="#gallery">GALLERY</a>
             <a href="#gear">GEAR</a>
             <a href="#contact">CONTACT</a>
@@ -427,6 +497,7 @@
 
     <div class="mobile-menu" id="mobileMenu">
         <a href="#about">ABOUT</a>
+        <a href="#video">VIDEO</a>
         <a href="#gallery">GALLERY</a>
         <a href="#gear">GEAR</a>
         <a href="#contact">CONTACT</a>
@@ -450,6 +521,48 @@
             <p>Hi, I'm Elliot Lane, a professional photographer with over 10 years of experience capturing special moments. My passion lies in creating timeless images that tell your unique story.</p>
             <p>I specialize in wedding, portrait, and event photography, with a style that blends documentary and artistic approaches to create authentic, beautiful images.</p>
             <p>When I'm not behind the camera, you can find me hiking in the mountains or experimenting with new photography techniques.</p>
+        </div>
+    </section>
+
+    <section class="video-section" id="video">
+        <h2 class="section-title">video <span>portfolio</span></h2>
+        <div class="video-tabs">
+            <div class="video-tab active" data-video="wedding-videos">Wedding Videos</div>
+            <div class="video-tab" data-video="travel-videos">Travel Videos</div>
+            <div class="video-tab" data-video="tutorials">Tutorials</div>
+        </div>
+
+        <div class="video-content active" id="wedding-videos">
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/7wtfhZwyrcc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-content" id="travel-videos">
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/9d8wWcJLnFI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/1La4QzGeaQ4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-content" id="tutorials">
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/K24lSJesWpE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/7NOGJj8jLc8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -625,6 +738,26 @@
                 // Show selected album content
                 const albumId = this.getAttribute('data-album');
                 document.getElementById(albumId).classList.add('active');
+            });
+        });
+
+        // Video tabs functionality
+        const videoTabs = document.querySelectorAll('.video-tab');
+        videoTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                videoTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all video contents
+                document.querySelectorAll('.video-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected video content
+                const videoId = this.getAttribute('data-video');
+                document.getElementById(videoId).classList.add('active');
             });
         });
 
