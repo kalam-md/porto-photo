@@ -206,11 +206,18 @@
             background-color: #f0f0f0;
         }
 
-        .video-tabs {
-            display: flex;
-            gap: 1rem;
+        .video-tabs-container {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 10px;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
+        }
+
+        .video-tabs {
+            display: inline-flex;
+            gap: 0.5rem;
+            padding: 5px 0;
+            white-space: nowrap;
         }
 
         .video-tab {
@@ -220,6 +227,7 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .video-tab.active {
@@ -270,11 +278,18 @@
             padding: 5rem 5%;
         }
 
-        .album-tabs {
-            display: flex;
-            gap: 1rem;
+        .album-tabs-container {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 10px;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
+        }
+
+        .album-tabs {
+            display: inline-flex;
+            gap: 0.5rem;
+            padding: 5px 0;
+            white-space: nowrap;
         }
 
         .album-tab {
@@ -284,6 +299,7 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .album-tab.active {
@@ -417,6 +433,28 @@
             background: #555;
         }
 
+        /* Hide scrollbar but keep functionality */
+        .album-tabs-container::-webkit-scrollbar,
+        .video-tabs-container::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        .album-tabs-container::-webkit-scrollbar-track,
+        .video-tabs-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .album-tabs-container::-webkit-scrollbar-thumb,
+        .video-tabs-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .album-tabs-container::-webkit-scrollbar-thumb:hover,
+        .video-tabs-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
         /* Mobile Styles */
         @media (max-width: 768px) {
             .nav-links {
@@ -506,9 +544,9 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>i'm passionate about <span>helping you</span></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut pharetra sit amet aliquam id diam maecenas ultricies mi. Venenatis urna cursus eget nunc. Proin sedile enim sed faucibus ture.</p>
-            <p>Eget nunc lobortis mattis aliquam. Proin sedile enim sed faucibus ture. Congue mauris rhoncus semean vel. Id interdum velit laoreet id. Faucibus pulvinar eugiat nibh.</p>
+            <h1>saya <span>sevrian iskandar</span></h1>
+            <p>memiliki kemampuan untuk menciptakan karya yang unik dan berkesan,  juga berdedikasi dalam mengabadikan keindahan dan emosi dalam setiap momen dengan pengalaman dalam berbagai jenis fotografi dan videografi.</p>
+            <p>"Saya berkomitmen untuk memberikan hasil yang terbaik dan memenuhi kebutuhan anda"</p>
         </div>
     </section>
 
@@ -526,16 +564,23 @@
 
     <section class="video-section" id="video">
         <h2 class="section-title">video <span>portfolio</span></h2>
-        <div class="video-tabs">
-            <div class="video-tab active" data-video="wedding-videos">Wedding Videos</div>
-            <div class="video-tab" data-video="travel-videos">Travel Videos</div>
-            <div class="video-tab" data-video="tutorials">Tutorials</div>
+        <div class="video-tabs-container">
+            <div class="video-tabs">
+                <div class="video-tab active" data-video="wedding-cinematic">Wedding Cinematic</div>
+                <div class="video-tab" data-video="stage-photography">Stage Photography</div>
+                <div class="video-tab" data-video="party-videography">Party Videography</div>
+                <div class="video-tab" data-video="family-gathering">Family Gathering</div>
+                <div class="video-tab" data-video="engagement-cinematic">Engagement Cinematic</div>
+                <div class="video-tab" data-video="endorsed-product">Endorsed/Product</div>
+                <div class="video-tab" data-video="event-videography">Event Videography</div>
+                <div class="video-tab" data-video="video-clip">Video Clip</div>
+            </div>
         </div>
 
-        <div class="video-content active" id="wedding-videos">
+        <div class="video-content active" id="wedding-cinematic">
             <div class="video-grid">
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.instagram.com/reel/DKL1BP6TPVG/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-item">
                     <iframe src="https://www.youtube.com/embed/7wtfhZwyrcc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -543,7 +588,7 @@
             </div>
         </div>
 
-        <div class="video-content" id="travel-videos">
+        <div class="video-content" id="stage-photography">
             <div class="video-grid">
                 <div class="video-item">
                     <iframe src="https://www.youtube.com/embed/9d8wWcJLnFI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -554,7 +599,7 @@
             </div>
         </div>
 
-        <div class="video-content" id="tutorials">
+        <div class="video-content" id="party-videography">
             <div class="video-grid">
                 <div class="video-item">
                     <iframe src="https://www.youtube.com/embed/K24lSJesWpE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -564,44 +609,180 @@
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="gallery-section" id="gallery">
-        <h2 class="section-title">photo <span>gallery</span></h2>
-        <div class="album-tabs">
-            <div class="album-tab active" data-album="prewedding">Prewedding</div>
-            <div class="album-tab" data-album="wedding">Wedding</div>
-            <div class="album-tab" data-album="graduation">Graduation</div>
-            <div class="album-tab" data-album="portrait">Portrait</div>
-        </div>
-
-        <div class="album-content active" id="prewedding">
-            <div class="photo-grid">
-                <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Prewedding 1">
+        <div class="video-content" id="family-gathering">
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Prewedding 2">
-                </div>
-                <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Prewedding 3">
-                </div>
-                <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Prewedding 4">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/7wtfhZwyrcc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
 
-        <div class="album-content" id="wedding">
+        <div class="video-content" id="engagement-cinematic">
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/9d8wWcJLnFI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/1La4QzGeaQ4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-content" id="endorsed-product">
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/K24lSJesWpE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/7NOGJj8jLc8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-content" id="event-videography">
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/7wtfhZwyrcc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-content" id="video-clip">
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/9d8wWcJLnFI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/1La4QzGeaQ4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">photo <span>gallery</span></h2>
+        <div class="album-tabs-container">
+            <div class="album-tabs">
+                <div class="album-tab active" data-album="wedding">Wedding</div>
+                <div class="album-tab" data-album="stagephotography">Stage Photography</div>
+                <div class="album-tab" data-album="party">Party</div>
+                <div class="album-tab" data-album="otomotif">Otomotif</div>
+                <div class="album-tab" data-album="graduation">Graduation</div>
+                <div class="album-tab" data-album="family">Family</div>
+                <div class="album-tab" data-album="engagement">Engagement</div>
+                <div class="album-tab" data-album="endorsedproduct">Endorsed/Product</div>
+                <div class="album-tab" data-album="conference">Conference</div>
+                <div class="album-tab" data-album="birthdaykids">Birthday Kids</div>
+            </div>
+        </div>
+
+        <div class="album-content active" id="wedding">
             <div class="photo-grid">
                 <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding 1">
+                    <img src="img/wedding/1.jpg" alt="Wedding">
                 </div>
                 <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding 2">
+                    <img src="img/wedding/2.jpg" alt="Wedding">
                 </div>
                 <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding 3">
+                    <img src="img/wedding/3.jpg" alt="Wedding">
+                </div>
+                <div class="photo-item">
+                    <img src="img/wedding/4.jpg" alt="Wedding">
+                </div>
+                <div class="photo-item">
+                    <img src="img/wedding/5.jpg" alt="Wedding">
+                </div>
+                <div class="photo-item">
+                    <img src="img/wedding/10.jpg" alt="Wedding">
+                </div>
+                <div class="photo-item">
+                    <img src="img/wedding/12.jpg" alt="Wedding">
+                </div>
+                <div class="photo-item">
+                    <img src="img/wedding/13.jpg" alt="Wedding">
+                </div>
+            </div>
+        </div>
+
+        <div class="album-content" id="stagephotography">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="img/stage-photography/1.png" alt="Stage">
+                </div>
+                <div class="photo-item">
+                    <img src="img/stage-photography/2.png" alt="Stage">
+                </div>
+                <div class="photo-item">
+                    <img src="img/stage-photography/3.jpg" alt="Stage">
+                </div>
+                <div class="photo-item">
+                    <img src="img/stage-photography/4.png" alt="Stage">
+                </div>
+                <div class="photo-item">
+                    <img src="img/stage-photography/5.jpg" alt="Stage">
+                </div>
+                <div class="photo-item">
+                    <img src="img/stage-photography/6.jpg" alt="Stage">
+                </div>
+                <div class="photo-item">
+                    <img src="img/stage-photography/7.jpg" alt="Stage">
+                </div>
+                <div class="photo-item">
+                    <img src="img/stage-photography/8.jpg" alt="Stage">
+                </div>
+            </div>
+        </div>
+
+        <div class="album-content" id="party">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="img/party/1.jpg" alt="Party">
+                </div>
+                <div class="photo-item">
+                    <img src="img/party/9.jpg" alt="Party">
+                </div>
+                <div class="photo-item">
+                    <img src="img/party/10.jpg" alt="Party">
+                </div>
+                <div class="photo-item">
+                    <img src="img/party/12.jpg" alt="Party">
+                </div>
+            </div>
+        </div>
+
+        <div class="album-content" id="otomotif">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="img/otomotif/1.jpg" alt="Otomotif">
+                </div>
+                <div class="photo-item">
+                    <img src="img/otomotif/2.jpg" alt="Otomotif">
+                </div>
+                <div class="photo-item">
+                    <img src="img/otomotif/3.jpg" alt="Otomotif">
+                </div>
+                <div class="photo-item">
+                    <img src="img/otomotif/4.jpg" alt="Otomotif">
+                </div>
+                <div class="photo-item">
+                    <img src="img/otomotif/5.jpg" alt="Otomotif">
+                </div>
+                <div class="photo-item">
+                    <img src="img/otomotif/6.jpg" alt="Otomotif">
+                </div>
+                <div class="photo-item">
+                    <img src="img/otomotif/7.jpg" alt="Otomotif">
+                </div>
+                <div class="photo-item">
+                    <img src="img/otomotif/8.jpg" alt="Otomotif">
                 </div>
             </div>
         </div>
@@ -609,24 +790,173 @@
         <div class="album-content" id="graduation">
             <div class="photo-grid">
                 <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Graduation 1">
+                    <img src="img/graduation/1.jpg" alt="Graduation 1">
                 </div>
                 <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Graduation 2">
+                    <img src="img/graduation/2.jpg" alt="Graduation 2">
+                </div>
+                <div class="photo-item">
+                    <img src="img/graduation/3.jpg" alt="Graduation 3">
+                </div>
+                <div class="photo-item">
+                    <img src="img/graduation/4.jpg" alt="Graduation 4">
+                </div>
+                <div class="photo-item">
+                    <img src="img/graduation/5.jpg" alt="Graduation 5">
+                </div>
+                <div class="photo-item">
+                    <img src="img/graduation/6.jpg" alt="Graduation 6">
+                </div>
+                <div class="photo-item">
+                    <img src="img/graduation/7.jpg" alt="Graduation 7">
+                </div>
+                <div class="photo-item">
+                    <img src="img/graduation/8.jpg" alt="Graduation 8">
                 </div>
             </div>
         </div>
 
-        <div class="album-content" id="portrait">
+        <div class="album-content" id="family">
             <div class="photo-grid">
                 <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Portrait 1">
+                    <img src="img/family/1.jpg" alt="Family">
                 </div>
                 <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Portrait 2">
+                    <img src="img/family/2.jpg" alt="Family">
                 </div>
                 <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Portrait 3">
+                    <img src="img/family/3.jpg" alt="Family">
+                </div>
+                <div class="photo-item">
+                    <img src="img/family/4.jpg" alt="Family">
+                </div>
+                <div class="photo-item">
+                    <img src="img/family/10.jpg" alt="Family">
+                </div>
+                <div class="photo-item">
+                    <img src="img/family/6.jpg" alt="Family">
+                </div>
+                <div class="photo-item">
+                    <img src="img/family/7.jpg" alt="Family">
+                </div>
+                <div class="photo-item">
+                    <img src="img/family/8.jpg" alt="Family">
+                </div>
+            </div>
+        </div>
+
+        <div class="album-content" id="engagement">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="img/engagement/1.jpg" alt="Engagement 1">
+                </div>
+                <div class="photo-item">
+                    <img src="img/engagement/2.jpg" alt="Engagement 2">
+                </div>
+                <div class="photo-item">
+                    <img src="img/engagement/3.jpg" alt="Engagement 3">
+                </div>
+                <div class="photo-item">
+                    <img src="img/engagement/4.jpg" alt="Engagement 4">
+                </div>
+                <div class="photo-item">
+                    <img src="img/engagement/5.jpg" alt="Engagement 5">
+                </div>
+                <div class="photo-item">
+                    <img src="img/engagement/6.jpg" alt="Engagement 6">
+                </div>
+                <div class="photo-item">
+                    <img src="img/engagement/7.jpg" alt="Engagement 7">
+                </div>
+                <div class="photo-item">
+                    <img src="img/engagement/8.jpg" alt="Engagement 8">
+                </div>
+            </div>
+        </div>
+
+        <div class="album-content" id="endorsedproduct">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="img/endorsed-product/1.jpg" alt="Product 1">
+                </div>
+                <div class="photo-item">
+                    <img src="img/endorsed-product/2.jpg" alt="Product 2">
+                </div>
+                <div class="photo-item">
+                    <img src="img/endorsed-product/3.jpg" alt="Product 3">
+                </div>
+                <div class="photo-item">
+                    <img src="img/endorsed-product/4.jpg" alt="Product 4">
+                </div>
+                <div class="photo-item">
+                    <img src="img/endorsed-product/5.jpg" alt="Product 5">
+                </div>
+                <div class="photo-item">
+                    <img src="img/endorsed-product/6.jpg" alt="Product 6">
+                </div>
+                <div class="photo-item">
+                    <img src="img/endorsed-product/7.jpg" alt="Product 7">
+                </div>
+                <div class="photo-item">
+                    <img src="img/endorsed-product/8.jpg" alt="Product 8">
+                </div>
+            </div>
+        </div>
+
+        <div class="album-content" id="conference">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="img/conference/1.jpg" alt="Conference 1">
+                </div>
+                <div class="photo-item">
+                    <img src="img/conference/2.jpg" alt="Conference 2">
+                </div>
+                <div class="photo-item">
+                    <img src="img/conference/3.jpg" alt="Conference 3">
+                </div>
+                <div class="photo-item">
+                    <img src="img/conference/4.jpg" alt="Conference 4">
+                </div>
+                <div class="photo-item">
+                    <img src="img/conference/5.jpg" alt="Conference 5">
+                </div>
+                <div class="photo-item">
+                    <img src="img/conference/6.jpg" alt="Conference 6">
+                </div>
+                <div class="photo-item">
+                    <img src="img/conference/7.jpg" alt="Conference 7">
+                </div>
+                <div class="photo-item">
+                    <img src="img/conference/8.jpg" alt="Conference 8">
+                </div>
+            </div>
+        </div>
+
+        <div class="album-content" id="birthdaykids">
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="img/birthday/1.jpg" alt="Birthday 1">
+                </div>
+                <div class="photo-item">
+                    <img src="img/birthday/2.jpg" alt="Birthday 2">
+                </div>
+                <div class="photo-item">
+                    <img src="img/birthday/3.jpg" alt="Birthday 3">
+                </div>
+                <div class="photo-item">
+                    <img src="img/birthday/4.jpg" alt="Birthday 4">
+                </div>
+                <div class="photo-item">
+                    <img src="img/birthday/5.jpg" alt="Birthday 5">
+                </div>
+                <div class="photo-item">
+                    <img src="img/birthday/6.jpg" alt="Birthday 6">
+                </div>
+                <div class="photo-item">
+                    <img src="img/birthday/7.jpg" alt="Birthday 7">
+                </div>
+                <div class="photo-item">
+                    <img src="img/birthday/8.jpg" alt="Birthday 8">
                 </div>
             </div>
         </div>
@@ -646,29 +976,47 @@
             </div>
             <div class="gear-item">
                 <div class="gear-image">
-                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Canon 24-70mm Lens">
+                    <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Canon 24-70mm f/2.8L">
                 </div>
                 <div class="gear-details">
-                    <h3>Canon EF 24-70mm f/2.8L II</h3>
-                    <p>Professional standard zoom lens that stays on my camera 80% of the time. Perfect for weddings and portraits.</p>
+                    <h3>Canon RF 24-70mm f/2.8L</h3>
+                    <p>Professional zoom lens perfect for portraits, events, and general photography. Sharp optics and fast autofocus.</p>
                 </div>
             </div>
             <div class="gear-item">
                 <div class="gear-image">
-                    <img src="https://images.unsplash.com/photo-1573481078804-70c9d3406cff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="DJI Gimbal">
+                    <img src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Canon 85mm f/1.2L">
+                </div>
+                <div class="gear-details">
+                    <h3>Canon RF 85mm f/1.2L</h3>
+                    <p>Prime portrait lens with beautiful bokeh and exceptional low-light performance. Ideal for intimate portraits.</p>
+                </div>
+            </div>
+            <div class="gear-item">
+                <div class="gear-image">
+                    <img src="https://images.unsplash.com/photo-1617005082133-548c4dd27f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Profoto B1X">
+                </div>
+                <div class="gear-details">
+                    <h3>Profoto B1X</h3>
+                    <p>Portable studio flash with TTL and High-Speed Sync. Essential for professional lighting setups.</p>
+                </div>
+            </div>
+            <div class="gear-item">
+                <div class="gear-image">
+                    <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="DJI Ronin-S">
                 </div>
                 <div class="gear-details">
                     <h3>DJI Ronin-S</h3>
-                    <p>3-axis gimbal stabilizer that ensures buttery smooth footage during video shoots and moving portraits.</p>
+                    <p>3-axis handheld gimbal stabilizer for smooth video footage and dynamic camera movements.</p>
                 </div>
             </div>
             <div class="gear-item">
                 <div class="gear-image">
-                    <img src="https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Profoto Light">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Manfrotto Tripod">
                 </div>
                 <div class="gear-details">
-                    <h3>Profoto B10</h3>
-                    <p>250Ws battery-powered monolight that gives me studio-quality lighting anywhere I shoot.</p>
+                    <h3>Manfrotto Carbon Fiber Tripod</h3>
+                    <p>Lightweight yet sturdy tripod for stable shots and long exposures. Essential for landscape and studio work.</p>
                 </div>
             </div>
         </div>
@@ -676,26 +1024,31 @@
 
     <section class="contact-section" id="contact">
         <h2 class="section-title">get in <span>touch</span></h2>
-        <p>Ready to book a session or have questions? Reach out to me directly through these channels:</p>
-        
+        <p>Ready to capture your special moments? Let's discuss your photography needs and create something beautiful together.</p>
         <div class="social-links">
-            <a href="https://instagram.com/yourusername" class="social-link" target="_blank">
+            <a href="#" class="social-link" aria-label="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://wa.me/yourphonenumber" class="social-link" target="_blank">
-                <i class="fab fa-whatsapp"></i>
+            <a href="#" class="social-link" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
             </a>
-            <a href="mailto:your@email.com" class="social-link">
+            <a href="#" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Email">
                 <i class="fas fa-envelope"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
             </a>
         </div>
     </section>
 
     <script>
-        // Navbar scroll effect
+        // Navigation scroll effect
         window.addEventListener('scroll', function() {
             const nav = document.getElementById('mainNav');
-            if (window.scrollY > 50) {
+            if (window.scrollY > 100) {
                 nav.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
@@ -707,76 +1060,106 @@
         const mobileMenu = document.getElementById('mobileMenu');
 
         hamburger.addEventListener('click', function() {
-            this.classList.toggle('active');
             mobileMenu.classList.toggle('open');
-            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+            hamburger.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
+        // Close mobile menu when clicking on links
+        const mobileLinks = document.querySelectorAll('.mobile-menu a');
+        mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
                 mobileMenu.classList.remove('open');
-                document.body.style.overflow = '';
+                hamburger.classList.remove('active');
             });
         });
 
-        // Album tabs functionality
-        const albumTabs = document.querySelectorAll('.album-tab');
-        albumTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs
-                albumTabs.forEach(t => t.classList.remove('active'));
-                // Add active class to clicked tab
-                this.classList.add('active');
-                
-                // Hide all album contents
-                document.querySelectorAll('.album-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // Show selected album content
-                const albumId = this.getAttribute('data-album');
-                document.getElementById(albumId).classList.add('active');
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
 
         // Video tabs functionality
         const videoTabs = document.querySelectorAll('.video-tab');
+        const videoContents = document.querySelectorAll('.video-content');
+
         videoTabs.forEach(tab => {
             tab.addEventListener('click', function() {
-                // Remove active class from all tabs
+                const targetVideo = this.getAttribute('data-video');
+                
+                // Remove active class from all tabs and contents
                 videoTabs.forEach(t => t.classList.remove('active'));
-                // Add active class to clicked tab
+                videoContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
                 this.classList.add('active');
-                
-                // Hide all video contents
-                document.querySelectorAll('.video-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // Show selected video content
-                const videoId = this.getAttribute('data-video');
-                document.getElementById(videoId).classList.add('active');
+                document.getElementById(targetVideo).classList.add('active');
             });
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+        // Album tabs functionality
+        const albumTabs = document.querySelectorAll('.album-tab');
+        const albumContents = document.querySelectorAll('.album-content');
+
+        albumTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetAlbum = this.getAttribute('data-album');
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                // Remove active class from all tabs and contents
+                albumTabs.forEach(t => t.classList.remove('active'));
+                albumContents.forEach(c => c.classList.remove('active'));
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                document.getElementById(targetAlbum).classList.add('active');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.photo-item, .video-item, .gear-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(item);
+        });
+
+        // Lazy loading for images
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img').forEach(img => {
+            imageObserver.observe(img);
         });
     </script>
 </body>
