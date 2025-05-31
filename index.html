@@ -246,7 +246,7 @@
 
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
@@ -256,8 +256,10 @@
             border-radius: 5px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
+            width: 100%;
+            /* Aspek rasio 9:16 seperti Instagram Reels */
+            aspect-ratio: 9/16;
+            background: #000;
         }
 
         .video-item:hover {
@@ -488,10 +490,6 @@
                 font-size: 2rem;
             }
 
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-
             .gear-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -504,6 +502,10 @@
 
             .hero p {
                 font-size: 1rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
             }
 
             .photo-grid {
@@ -566,7 +568,8 @@
         <h2 class="section-title">video <span>portfolio</span></h2>
         <div class="video-tabs-container">
             <div class="video-tabs">
-                <div class="video-tab active" data-video="wedding-cinematic">Wedding Cinematic</div>
+                <div class="video-tab active" data-video="graduation-cinematic">Graduation</div>
+                <div class="video-tab" data-video="wedding-cinematic">Wedding Cinematic</div>
                 <div class="video-tab" data-video="stage-photography">Stage Photography</div>
                 <div class="video-tab" data-video="party-videography">Party Videography</div>
                 <div class="video-tab" data-video="family-gathering">Family Gathering</div>
@@ -577,13 +580,24 @@
             </div>
         </div>
 
-        <div class="video-content active" id="wedding-cinematic">
+        <div class="video-content active" id="graduation-cinematic">
             <div class="video-grid">
                 <div class="video-item">
                     <iframe src="https://www.instagram.com/reel/DKL1BP6TPVG/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/7wtfhZwyrcc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.instagram.com/reel/DFyZFrnTpUH/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-content" id="wedding-cinematic">
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe src="https://www.instagram.com/reel/DKL1BP6TPVG/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.instagram.com/reel/C5yZpJTB6Tm/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -591,10 +605,10 @@
         <div class="video-content" id="stage-photography">
             <div class="video-grid">
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/9d8wWcJLnFI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.instagram.com/reel/DDwo_kdx4bH/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/1La4QzGeaQ4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.instagram.com/reel/DJjPplWzrwj/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -602,10 +616,7 @@
         <div class="video-content" id="party-videography">
             <div class="video-grid">
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/K24lSJesWpE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/7NOGJj8jLc8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.instagram.com/reel/C-JHtADyeS5/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -613,10 +624,7 @@
         <div class="video-content" id="family-gathering">
             <div class="video-grid">
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/7wtfhZwyrcc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.instagram.com/reel/C-wkcMtypfz/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -624,10 +632,7 @@
         <div class="video-content" id="engagement-cinematic">
             <div class="video-grid">
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/9d8wWcJLnFI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/1La4QzGeaQ4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.instagram.com/reel/DFybiRpzLUA/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -635,10 +640,7 @@
         <div class="video-content" id="endorsed-product">
             <div class="video-grid">
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/K24lSJesWpE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/7NOGJj8jLc8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.instagram.com/reel/DBYR7RsS30g/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -646,10 +648,7 @@
         <div class="video-content" id="event-videography">
             <div class="video-grid">
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/7wtfhZwyrcc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.instagram.com/reel/DBx5eOoSmAv/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -657,10 +656,7 @@
         <div class="video-content" id="video-clip">
             <div class="video-grid">
                 <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/9d8wWcJLnFI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="video-item">
-                    <iframe src="https://www.youtube.com/embed/1La4QzGeaQ4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.instagram.com/reel/DDxViYCBCCK/embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
